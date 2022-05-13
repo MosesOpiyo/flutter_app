@@ -29,7 +29,8 @@ class IntroPage001 extends StatelessWidget {
                 margin: EdgeInsetsDirectional.only(top: 10),
                 child: Text(
                   'Clearing your way of obstacles.Its free and fast',
-                  style: TextStyle(fontSize: 17),
+                  style: TextStyle(
+                      fontSize: 17, color: Color(0xFF0E3311).withOpacity(0.5)),
                 ),
               ),
               // ignore: avoid_unnecessary_containers

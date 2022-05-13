@@ -30,7 +30,8 @@ class IntroPage002 extends StatelessWidget {
                 margin: EdgeInsetsDirectional.only(top: 10),
                 child: Text(
                   'Fast transactions,fast services saving you time.',
-                  style: TextStyle(fontSize: 17),
+                  style: TextStyle(
+                      fontSize: 17, color: Color(0xFF0E3311).withOpacity(0.5)),
                 ),
               ),
               // ignore: avoid_unnecessary_containers
