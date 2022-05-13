@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:gateway/intro_pages/intro_page_001.dart';
+import 'package:gateway/intro_pages/intro_page_002.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.amber,
       ),
-      home: IntroPage001(),
+      home: IntroPage002(),
     );
   }
 }
