@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
       ),
       actions: [
         Container(
-          margin: EdgeInsetsDirectional.only(end: 12),
+          padding: EdgeInsets.all(10),
           decoration:
               BoxDecoration(borderRadius: BorderRadiusDirectional.circular(10)),
           child: IconButton(
