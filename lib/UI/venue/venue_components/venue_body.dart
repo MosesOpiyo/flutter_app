@@ -1,4 +1,4 @@
-// ignore_for_file: unused_local_variable, prefer_const_constructors, sized_box_for_whitespace, avoid_unnecessary_containers
+// ignore_for_file: unused_local_variable, prefer_const_constructors, sized_box_for_whitespace, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables, duplicate_ignore
 
 import 'package:flutter/material.dart';
 
@@ -99,27 +99,25 @@ class VenueBody extends StatelessWidget {
                       height: 50,
                       margin: EdgeInsets.only(top: 30),
                       child: Row(
+                        // ignore: prefer_const_literals_to_create_immutables
                         children: <Widget>[
-                          Container(
-                            child: Text(
-                              'Description',
-                              style: TextStyle(fontWeight: FontWeight.bold),
+                          // ignore: prefer_const_literals_to_create_immutables
+                          TabBar(tabs: [
+                            Tab(
+                              text: 'Description',
                             ),
-                          ),
-                          Container(
-                            padding: EdgeInsets.only(left: 15),
-                            child: Text(
-                              'Description',
-                              style: TextStyle(fontWeight: FontWeight.bold),
+                            Tab(
+                              text: 'Parking charges',
                             ),
-                          ),
-                          Container(
-                            padding: EdgeInsets.only(left: 15),
-                            child: Text(
-                              'Description',
-                              style: TextStyle(fontWeight: FontWeight.bold),
+                            Tab(
+                              text: 'Description_002',
                             ),
-                          ),
+                            TabBarView(children: [
+                              Text('decription tab'),
+                              Text('charges tab'),
+                              Text('description_002 tab')
+                            ])
+                          ])
                         ],
                       ),
                     ),
