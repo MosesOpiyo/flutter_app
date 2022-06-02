@@ -12,6 +12,7 @@ class Venue extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(270),
+        // ignore: sized_box_for_whitespace
         child: Container(
           height: 300,
           child: Stack(
