@@ -15,68 +15,7 @@ class VenueBody extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Container(
-              height: 300,
-              child: Stack(
-                children: <Widget>[
-                  Positioned.fill(
-                      child: ClipRRect(
-                    child: Image(
-                        fit: BoxFit.cover,
-                        image: NetworkImage(
-                          'https://images.pexels.com/photos/5672376/pexels-photo-5672376.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-                        )),
-                  )),
-                  Positioned(
-                    bottom: 0,
-                    right: 0,
-                    left: 0,
-                    child: Container(
-                      height: 120,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                            begin: Alignment.bottomCenter,
-                            end: Alignment.topCenter,
-                            colors: [
-                              Colors.black.withOpacity(0.7),
-                              Colors.transparent
-                            ]),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 20,
-                    left: 15,
-                    child: Column(
-                      children: <Widget>[
-                        Container(
-                            margin: EdgeInsetsDirectional.only(top: 5, end: 55),
-                            child: Row(
-                              children: <Widget>[
-                                Icon(
-                                  Icons.location_pin,
-                                  color: Colors.white,
-                                  size: 15,
-                                ),
-                                Container(
-                                  padding: EdgeInsets.only(left: 5),
-                                  child: Text(
-                                    'Location',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w600),
-                                  ),
-                                ),
-                              ],
-                            )),
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ),
-            Container(
-                margin: EdgeInsets.only(left: 20, top: 20),
+                margin: EdgeInsets.only(left: 20, top: 10),
                 child: Column(
                   children: <Widget>[
                     Row(
@@ -93,31 +32,22 @@ class VenueBody extends StatelessWidget {
                             color: Colors.green,
                           ),
                         ),
+                        Container(
+                          padding: EdgeInsets.only(left: 90),
+                          child: IconButton(
+                              icon: Icon(Icons.bookmark_border),
+                              iconSize: 30,
+                              onPressed: () {}),
+                        ),
                       ],
                     ),
                     Container(
-                      height: 50,
-                      margin: EdgeInsets.only(top: 30),
                       child: Row(
-                        // ignore: prefer_const_literals_to_create_immutables
                         children: <Widget>[
-                          // ignore: prefer_const_literals_to_create_immutables
-                          TabBar(tabs: [
-                            Tab(
-                              text: 'Description',
-                            ),
-                            Tab(
-                              text: 'Parking charges',
-                            ),
-                            Tab(
-                              text: 'Description_002',
-                            ),
-                            TabBarView(children: [
-                              Text('decription tab'),
-                              Text('charges tab'),
-                              Text('description_002 tab')
-                            ])
-                          ])
+                          Text(
+                            'Details',
+                            style: TextStyle(color: Colors.black),
+                          )
                         ],
                       ),
                     ),
