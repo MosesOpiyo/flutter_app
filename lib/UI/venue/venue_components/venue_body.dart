@@ -1,9 +1,9 @@
-// ignore_for_file: unused_local_variable, prefer_const_constructors, sized_box_for_whitespace, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables, duplicate_ignore
+// ignore_for_file: unused_local_variable, prefer_const_constructors, sized_box_for_whitespace, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables, duplicate_ignore, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
 
 class VenueBody extends StatelessWidget {
-  const VenueBody({Key? key}) : super(key: key);
+  // ignore: unused_field
 
   @override
   Widget build(BuildContext context) {
