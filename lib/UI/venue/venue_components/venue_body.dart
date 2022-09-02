@@ -3,6 +3,7 @@
 // ignore: avoid_web_libraries_in_flutter
 
 import 'package:flutter/material.dart';
+import 'package:gateway/UI/checkout/checkout.dart';
 
 class VenueBody extends StatelessWidget {
   // ignore: unused_field
@@ -235,7 +236,13 @@ class VenueBody extends StatelessWidget {
                                 RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10),
                                     side: BorderSide(color: Colors.amber)))),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Checkout()),
+                      );
+                    },
                     child: Text('Get In'),
                   ),
                 ),

@@ -1,8 +1,22 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+// ignore: unused_import
+import 'package:gateway/UI/checkout/checkout.dart';
+// ignore: unused_import
+import 'package:gateway/UI/homepage.dart';
+// ignore: unused_import
+import 'package:gateway/UI/venue/venue.dart';
+// ignore: unused_import
+import 'package:gateway/authentication/signup.dart';
+// ignore: unused_import
+import 'package:gateway/authentication/login.dart';
+// ignore: unused_import
 import 'package:gateway/intro_pages/intro_page_001.dart';
+// ignore: unused_import
 import 'package:gateway/intro_pages/intro_page_002.dart';
+// ignore: unused_import
+import 'package:gateway/authentication/phone_number_auth.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,7 +42,11 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.amber,
       ),
-      home: IntroPage002(),
+      home: IntroPage001(),
+      routes: {
+        '/login': (context) => LoginPage(),
+        '/register': (context) => SignupPage(),
+      },
     );
   }
 }
