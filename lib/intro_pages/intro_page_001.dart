@@ -1,6 +1,7 @@
 // ignore_for_file: unused_import, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:gateway/intro_pages/intro_page_002.dart';
 
 class IntroPage001 extends StatelessWidget {
   const IntroPage001({Key? key}) : super(key: key);
@@ -26,7 +27,7 @@ class IntroPage001 extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsetsDirectional.only(top: 10),
+                margin: EdgeInsetsDirectional.only(top: 10, start: 5, end: 5),
                 child: Text(
                   'Clearing your way of obstacles.Its free and fast',
                   style: TextStyle(
@@ -40,8 +41,14 @@ class IntroPage001 extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                       primary: Colors.amber, // background
                       onPrimary: Colors.white, // foreground
-                      minimumSize: Size(350, 50)),
-                  onPressed: () {},
+                      minimumSize: Size(320, 50)),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const IntroPage002()),
+                    );
+                  },
                   child: Text('Get started'),
                 ),
               ),
