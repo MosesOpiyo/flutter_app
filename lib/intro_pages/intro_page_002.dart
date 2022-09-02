@@ -1,6 +1,7 @@
 // ignore_for_file: unused_import, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:gateway/authentication/signup.dart';
 
 class IntroPage002 extends StatelessWidget {
   const IntroPage002({Key? key}) : super(key: key);
@@ -42,7 +43,12 @@ class IntroPage002 extends StatelessWidget {
                       primary: Colors.amber, // background
                       onPrimary: Colors.white, // foreground
                       minimumSize: Size(350, 50)),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SignupPage()),
+                    );
+                  },
                   child: Text('Get started'),
                 ),
               ),

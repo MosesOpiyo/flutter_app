@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:gateway/UI/checkout/checkou_body.dart';
+import 'package:gateway/UI/venue/venue.dart';
 
 class Checkout extends StatelessWidget {
   const Checkout({Key? key}) : super(key: key);
@@ -34,7 +35,13 @@ class Checkout extends StatelessWidget {
                           size: 30,
                           color: Colors.white,
                         ),
-                        onPressed: () {}),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Venue()),
+                          );
+                        }),
                   ),
                 ],
               ),

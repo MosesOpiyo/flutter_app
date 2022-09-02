@@ -119,92 +119,94 @@ class Body extends StatelessWidget {
                 ],
               ),
             ),
-            ListView(
-              shrinkWrap: true,
-              children: <Widget>[
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                    Container(
-                      margin: EdgeInsets.all(20),
-                      height: 150,
-                      child: Stack(
-                        children: <Widget>[
-                          Positioned.fill(
-                              child: ClipRRect(
-                            borderRadius: BorderRadius.circular(20.0),
-                            child: Image(
-                                fit: BoxFit.cover,
-                                image: NetworkImage(
-                                  'https://images.pexels.com/photos/5672376/pexels-photo-5672376.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-                                )),
-                          )),
-                          Positioned(
-                            bottom: 0,
-                            right: 0,
-                            left: 0,
-                            child: Container(
-                              height: 120,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(
-                                    bottomLeft: Radius.circular(20),
-                                    bottomRight: Radius.circular(20)),
-                                gradient: LinearGradient(
-                                    begin: Alignment.bottomCenter,
-                                    end: Alignment.topCenter,
-                                    colors: [
-                                      Colors.black.withOpacity(0.7),
-                                      Colors.transparent
-                                    ]),
+            Center(
+              child: ListView(
+                shrinkWrap: true,
+                children: <Widget>[
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: <Widget>[
+                      Container(
+                        margin: EdgeInsets.all(20),
+                        height: 150,
+                        child: Stack(
+                          children: <Widget>[
+                            Positioned.fill(
+                                child: ClipRRect(
+                              borderRadius: BorderRadius.circular(20.0),
+                              child: Image(
+                                  fit: BoxFit.cover,
+                                  image: NetworkImage(
+                                    'https://images.pexels.com/photos/5672376/pexels-photo-5672376.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+                                  )),
+                            )),
+                            Positioned(
+                              bottom: 0,
+                              right: 0,
+                              left: 0,
+                              child: Container(
+                                height: 120,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                      bottomLeft: Radius.circular(20),
+                                      bottomRight: Radius.circular(20)),
+                                  gradient: LinearGradient(
+                                      begin: Alignment.bottomCenter,
+                                      end: Alignment.topCenter,
+                                      colors: [
+                                        Colors.black.withOpacity(0.7),
+                                        Colors.transparent
+                                      ]),
+                                ),
                               ),
                             ),
-                          ),
-                          Positioned(
-                            bottom: 20,
-                            left: 15,
-                            child: Column(
-                              children: <Widget>[
-                                Container(
-                                  child: Text(
-                                    'Name of place',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w600),
-                                  ),
-                                ),
-                                Container(
-                                    margin: EdgeInsetsDirectional.only(
-                                        top: 5, end: 55),
-                                    child: Row(
-                                      children: <Widget>[
-                                        Icon(
-                                          Icons.location_pin,
+                            Positioned(
+                              bottom: 20,
+                              left: 15,
+                              child: Column(
+                                children: <Widget>[
+                                  Container(
+                                    child: Text(
+                                      'Name of place',
+                                      style: TextStyle(
                                           color: Colors.white,
-                                          size: 15,
-                                        ),
-                                        Container(
-                                          padding: EdgeInsets.only(left: 5),
-                                          child: Text(
-                                            'Location',
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.w600),
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                  ),
+                                  Container(
+                                      margin: EdgeInsetsDirectional.only(
+                                          top: 5, end: 55),
+                                      child: Row(
+                                        children: <Widget>[
+                                          Icon(
+                                            Icons.location_pin,
+                                            color: Colors.white,
+                                            size: 15,
                                           ),
-                                        ),
-                                      ],
-                                    )),
-                              ],
-                            ),
-                          )
-                        ],
+                                          Container(
+                                            padding: EdgeInsets.only(left: 5),
+                                            child: Text(
+                                              'Location',
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.w600),
+                                            ),
+                                          ),
+                                        ],
+                                      )),
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+                    ],
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ],

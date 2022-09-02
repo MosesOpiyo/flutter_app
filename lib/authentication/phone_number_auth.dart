@@ -29,14 +29,57 @@ class PhoneNumber_Auth extends StatelessWidget {
                       fontWeight: FontWeight.w600),
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 38, vertical: 20),
-                child: TextField(
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(), labelText: 'Your number'),
-                  keyboardType: TextInputType.number,
-                ),
+              Row(
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                    child: SizedBox(
+                      width: 70,
+                      child: TextField(
+                        decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20.0)),
+                            labelText: 'Code'),
+                        keyboardType: TextInputType.number,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 20),
+                    child: SizedBox(
+                      width: 230,
+                      child: TextField(
+                        decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20.0)),
+                            labelText: 'Your number'),
+                        keyboardType: TextInputType.number,
+                      ),
+                    ),
+                  ),
+                ],
               ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: SizedBox(
+                  width: 330,
+                  height: 50,
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                        foregroundColor:
+                            MaterialStateProperty.all<Color>(Colors.white),
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(Colors.amber),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20),
+                                    side: BorderSide(color: Colors.amber)))),
+                    onPressed: () {},
+                    child: Text('Confirm'),
+                  ),
+                ),
+              )
             ],
           ),
         ),
