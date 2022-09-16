@@ -26,6 +26,15 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          shadowColor: Colors.transparent,
+          backgroundColor: Colors.transparent,
+          title: Text(
+            'Login',
+            style: TextStyle(fontWeight: FontWeight.w800, fontSize: 16),
+          ),
+        ),
         body: Center(
             child: Form(
               key: formKey,
@@ -42,28 +51,6 @@ class _LoginPageState extends State<LoginPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          Container(
-            child: Row(
-              children: <Widget>[
-                Container(
-                  child: IconButton(
-                      icon: Icon(
-                        Icons.chevron_left,
-                        size: 30,
-                        color: Colors.black,
-                      ),
-                      onPressed: () {}),
-                ),
-                Container(
-                  padding: EdgeInsetsDirectional.only(start: 110),
-                  child: Text(
-                    "Login",
-                    style: TextStyle(fontWeight: FontWeight.w800, fontSize: 16),
-                  ),
-                )
-              ],
-            ),
-          ),
           Container(
             padding: EdgeInsetsDirectional.only(end: 138, top: 80),
             child: Text(
@@ -170,7 +157,7 @@ class _LoginPageState extends State<LoginPage> {
                                 {
                                   await FlutterSession()
                                       .set('token', response.token),
-                                  print(response.token),
+                                  print('the response data is ${response}'),
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(

@@ -1,10 +1,19 @@
 // ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:flutter_session/flutter_session.dart';
+import 'package:gateway/Service/user_service.dart';
+import 'package:gateway/authentication/signup.dart';
+import 'package:http/http.dart';
 
-class Body extends StatelessWidget {
+class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);
 
+  @override
+  _BodyState createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     // ignore: unused_local_variable
@@ -14,6 +23,15 @@ class Body extends StatelessWidget {
       children: <Widget>[
         Column(
           children: <Widget>[
+            FutureBuilder(
+              future: FlutterSession().get('token'),
+              builder: (context, snapshot) {
+                Userservice()
+                    .profile()
+                    .then((response) async => {print(response)});
+                return Text('${snapshot}');
+              },
+            ),
             Container(
               height: size.height * 0.32,
               color: Colors.amber,

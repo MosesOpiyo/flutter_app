@@ -18,7 +18,7 @@ class APIService {
     Map<String, String> requestHeaders = {
       'Content-Type': 'application/json',
     };
-    var url = Uri.parse('http://127.0.0.1:8000/authentication/login');
+    var url = Uri.parse('http://192.168.100.13:8000/authentication/login');
     var response = await http.post(
       url,
       headers: requestHeaders,
@@ -30,9 +30,11 @@ class APIService {
   Future<RegistrationResponseModel> registration(
       String username, String email, String password) async {
     Map<String, String> requestHeaders = {
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json;charset=UTF-8',
+      'Charset': 'utf-8'
     };
-    var url = Uri.parse('http://127.0.0.1:8000/authentication/registration');
+    var url =
+        Uri.parse('http://192.168.100.13:8000/authentication/registration');
 
     var response = await http.post(
       url,

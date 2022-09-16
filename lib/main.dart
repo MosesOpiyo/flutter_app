@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_session/flutter_session.dart';
 // ignore: unused_import
 import 'package:gateway/UI/checkout/checkout.dart';
 // ignore: unused_import
@@ -42,7 +43,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.amber,
       ),
-      home: IntroPage001(),
+      home: LoginPage(),
       routes: {
         '/login': (context) => LoginPage(),
         '/register': (context) => SignupPage(),
