@@ -157,11 +157,15 @@ class _LoginPageState extends State<LoginPage> {
                                 {
                                   await FlutterSession()
                                       .set('token', response.token),
+                                  // ignore: unnecessary_brace_in_string_interps
                                   print('the response data is ${response}'),
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => HomePage()),
+                                        builder: (context) => HomePage(
+                                            // ignore: prefer_const_literals_to_create_immutables
+
+                                            )),
                                   )
                                 }
                               else

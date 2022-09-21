@@ -3,9 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:gateway/authentication/signup.dart';
 
+// ignore: use_key_in_widget_constructors
 class IntroPage002 extends StatelessWidget {
-  const IntroPage002({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

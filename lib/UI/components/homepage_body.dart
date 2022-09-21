@@ -1,44 +1,50 @@
-// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables, unused_import, import_of_legacy_library_into_null_safe
 
 import 'package:flutter/material.dart';
 import 'package:flutter_session/flutter_session.dart';
 import 'package:gateway/Service/user_service.dart';
+import 'package:gateway/Service/venue_service.dart';
+import 'package:gateway/UI/venue/venue.dart';
 import 'package:gateway/authentication/signup.dart';
-import 'package:http/http.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:gateway/Models/venueModels/venue_response.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert' as cnv;
 
 class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);
-
   @override
   _BodyState createState() => _BodyState();
 }
 
 class _BodyState extends State<Body> {
+  late List<VenueResponseModel> model = [];
+  // ignore: unnecessary_cast
+  void getVenues() async {
+    model = await Venueservice().getVenues(http.Client());
+  }
+
+  @override
+  void initState() {
+    getVenues();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     // ignore: unused_local_variable
     Size size = MediaQuery.of(context).size;
-    return ListView(
-      shrinkWrap: true,
-      children: <Widget>[
-        Column(
-          children: <Widget>[
-            FutureBuilder(
-              future: FlutterSession().get('token'),
-              builder: (context, snapshot) {
-                Userservice()
-                    .profile()
-                    .then((response) async => {print(response)});
-                return Text('${snapshot}');
-              },
-            ),
-            Container(
-              height: size.height * 0.32,
-              color: Colors.amber,
-              child: Column(
-                children: <Widget>[
-                  Container(
-                    padding: EdgeInsetsDirectional.only(start: 40, top: 10),
+    return SingleChildScrollView(
+      child: Expanded(
+        child: Column(children: <Widget>[
+          Container(
+            height: size.height * 0.31,
+            color: Colors.amber,
+            child: Column(
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsetsDirectional.only(start: 40, top: 10),
+                  child: Center(
                     child: Row(
                       children: <Widget>[
                         SizedBox(
@@ -96,138 +102,153 @@ class _BodyState extends State<Body> {
                       ],
                     ),
                   ),
-                  Container(
-                    padding: EdgeInsetsDirectional.only(end: 170, top: 15),
-                    child: Text(
-                      "Hello user,",
-                      style: TextStyle(
-                          fontSize: 30,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold),
-                    ),
+                ),
+                Container(
+                  padding: EdgeInsetsDirectional.only(end: 170, top: 10),
+                  child: Text(
+                    "Hello user,",
+                    style: TextStyle(
+                        fontSize: 30,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
                   ),
-                  Container(
-                    padding: EdgeInsetsDirectional.only(end: 120, top: 5),
-                    child: Text(
-                      "Where to?",
-                      style: TextStyle(
-                          fontSize: 30,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold),
-                    ),
+                ),
+                Container(
+                  padding: EdgeInsetsDirectional.only(end: 120, top: 5),
+                  child: Text(
+                    "Where to?",
+                    style: TextStyle(
+                        fontSize: 30,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
                   ),
-                  Container(
-                    padding: EdgeInsetsDirectional.only(top: 10),
-                    width: 330,
-                    child: TextField(
-                      decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Color.fromARGB(255, 244, 208, 99),
-                          enabledBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                  color: Colors.transparent, width: 2.0),
-                              borderRadius: BorderRadius.circular(20.0)),
-                          hintText: 'Search area you are going',
-                          hintStyle: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold)),
-                      keyboardType: TextInputType.text,
-                    ),
+                ),
+                Container(
+                  padding: EdgeInsetsDirectional.only(top: 5),
+                  width: 330,
+                  child: TextField(
+                    decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Color.fromARGB(255, 244, 208, 99),
+                        enabledBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(
+                                color: Colors.transparent, width: 2.0),
+                            borderRadius: BorderRadius.circular(20.0)),
+                        hintText: 'Search area you are going',
+                        hintStyle: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold)),
+                    keyboardType: TextInputType.text,
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-            Center(
-              child: ListView(
-                shrinkWrap: true,
-                children: <Widget>[
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: <Widget>[
-                      Container(
-                        margin: EdgeInsets.all(20),
-                        height: 150,
-                        child: Stack(
-                          children: <Widget>[
-                            Positioned.fill(
-                                child: ClipRRect(
-                              borderRadius: BorderRadius.circular(20.0),
-                              child: Image(
-                                  fit: BoxFit.cover,
-                                  image: NetworkImage(
-                                    'https://images.pexels.com/photos/5672376/pexels-photo-5672376.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-                                  )),
-                            )),
-                            Positioned(
-                              bottom: 0,
-                              right: 0,
-                              left: 0,
-                              child: Container(
-                                height: 120,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.only(
-                                      bottomLeft: Radius.circular(20),
-                                      bottomRight: Radius.circular(20)),
-                                  gradient: LinearGradient(
-                                      begin: Alignment.bottomCenter,
-                                      end: Alignment.topCenter,
-                                      colors: [
-                                        Colors.black.withOpacity(0.7),
-                                        Colors.transparent
-                                      ]),
-                                ),
+          ),
+          SingleChildScrollView(
+              child: Expanded(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                ListView.builder(
+                  scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
+                  itemBuilder: (BuildContext context, index) {
+                    return Container(
+                      margin: EdgeInsets.only(top: 20, left: 20, right: 20),
+                      height: 150,
+                      child: Stack(
+                        children: <Widget>[
+                          Positioned.fill(
+                              child: ClipRRect(
+                            borderRadius: BorderRadius.circular(20.0),
+                            child: Image(
+                                fit: BoxFit.cover,
+                                image: NetworkImage(
+                                  'https://images.pexels.com/photos/5672376/pexels-photo-5672376.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+                                )),
+                          )),
+                          Positioned(
+                            bottom: 0,
+                            right: 0,
+                            left: 0,
+                            child: Container(
+                              height: 120,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(20),
+                                    bottomRight: Radius.circular(20)),
+                                gradient: LinearGradient(
+                                    begin: Alignment.bottomCenter,
+                                    end: Alignment.topCenter,
+                                    colors: [
+                                      Colors.black.withOpacity(0.7),
+                                      Colors.transparent
+                                    ]),
                               ),
                             ),
-                            Positioned(
-                              bottom: 20,
-                              left: 15,
-                              child: Column(
-                                children: <Widget>[
-                                  Container(
-                                    child: Text(
-                                      'Name of place',
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w600),
-                                    ),
+                          ),
+                          Positioned(
+                            bottom: 20,
+                            left: 15,
+                            child: Column(
+                              children: <Widget>[
+                                Container(
+                                  child: Text(
+                                    "name",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w600),
                                   ),
-                                  Container(
-                                      margin: EdgeInsetsDirectional.only(
-                                          top: 5, end: 55),
-                                      child: Row(
-                                        children: <Widget>[
-                                          Icon(
-                                            Icons.location_pin,
-                                            color: Colors.white,
-                                            size: 15,
+                                ),
+                                Container(
+                                    margin: EdgeInsetsDirectional.only(
+                                        top: 5, end: 55),
+                                    child: Row(
+                                      children: <Widget>[
+                                        Icon(
+                                          Icons.location_pin,
+                                          color: Colors.white,
+                                          size: 15,
+                                        ),
+                                        Container(
+                                          padding: EdgeInsets.only(left: 5),
+                                          child: Text(
+                                            'location',
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.w600),
                                           ),
-                                          Container(
-                                            padding: EdgeInsets.only(left: 5),
-                                            child: Text(
-                                              'Location',
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 15,
-                                                  fontWeight: FontWeight.w600),
-                                            ),
-                                          ),
-                                        ],
-                                      )),
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
+                                        ),
+                                      ],
+                                    )),
+                              ],
+                            ),
+                          )
+                        ],
                       ),
-                    ],
-                  ),
-                ],
-              ),
-            )
-          ],
-        ),
-      ],
+                    );
+                  },
+                  itemCount: 1,
+                ),
+              ],
+            ),
+          ))
+        ]),
+      ),
     );
+  }
+
+  Future<void> getData(http.Client client) async {
+    final http.Response response =
+        await client.get(Uri.parse('http://192.168.100.13:8000/venue/venues'));
+
+    print(response.body);
+    List<dynamic> body = cnv.jsonDecode(response.body);
+    var model =
+        body.map((dynamic item) => VenueResponseModel.fromJson(item)).toList();
+
+    setState(() {});
   }
 }
