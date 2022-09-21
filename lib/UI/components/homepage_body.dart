@@ -20,14 +20,23 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
   late List<VenueResponseModel> model = [];
   // ignore: unnecessary_cast
-  void getVenues() async {
-    model = await Venueservice().getVenues(http.Client());
-  }
-
   @override
   void initState() {
-    getVenues();
+    getData(http.Client());
     super.initState();
+  }
+
+  getData(http.Client client) async {
+    final http.Response response =
+        await client.get(Uri.parse('http://192.168.100.13:8000/venue/venues'));
+
+    var responseData = cnv.json.decode(response.body);
+    List<dynamic> body = cnv.jsonDecode(response.body);
+    setState(() {
+      model = body
+          .map((dynamic item) => VenueResponseModel.fromJson(item))
+          .toList();
+    });
   }
 
   @override
@@ -152,7 +161,7 @@ class _BodyState extends State<Body> {
                 ListView.builder(
                   scrollDirection: Axis.vertical,
                   shrinkWrap: true,
-                  itemBuilder: (BuildContext context, index) {
+                  itemBuilder: (context, index) {
                     return Container(
                       margin: EdgeInsets.only(top: 20, left: 20, right: 20),
                       height: 150,
@@ -194,7 +203,7 @@ class _BodyState extends State<Body> {
                               children: <Widget>[
                                 Container(
                                   child: Text(
-                                    "name",
+                                    model[index].name,
                                     style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 20,
@@ -214,7 +223,7 @@ class _BodyState extends State<Body> {
                                         Container(
                                           padding: EdgeInsets.only(left: 5),
                                           child: Text(
-                                            'location',
+                                            model[index].location,
                                             style: TextStyle(
                                                 color: Colors.white,
                                                 fontSize: 15,
@@ -230,7 +239,7 @@ class _BodyState extends State<Body> {
                       ),
                     );
                   },
-                  itemCount: 1,
+                  itemCount: model.length,
                 ),
               ],
             ),
@@ -238,17 +247,5 @@ class _BodyState extends State<Body> {
         ]),
       ),
     );
-  }
-
-  Future<void> getData(http.Client client) async {
-    final http.Response response =
-        await client.get(Uri.parse('http://192.168.100.13:8000/venue/venues'));
-
-    print(response.body);
-    List<dynamic> body = cnv.jsonDecode(response.body);
-    var model =
-        body.map((dynamic item) => VenueResponseModel.fromJson(item)).toList();
-
-    setState(() {});
   }
 }
