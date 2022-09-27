@@ -154,7 +154,7 @@ class _SignupPageState extends State<SignupPage> {
                               if (response.username != "" &&
                                   response.email != "" &&
                                   response.password != "")
-                                {
+                                { 
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(

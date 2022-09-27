@@ -1,22 +1,22 @@
-// ignore_for_file: file_names, unnecessary_new, prefer_collection_literals, unnecessary_this, avoid_print
-import 'dart:convert';
-
-// ignore: non_constant_identifier_names
-UserResponseModel UserResponseJson(String str) =>
-    UserResponseModel.fromJson(json.decode(str));
-
 class UserResponseModel {
-  String? user;
+  final String username;
+  final String email;
+  final String phoneNumber;
+  final String licensePlate;
 
-  UserResponseModel({this.user});
+  const UserResponseModel({
+    required this.username,
+    required this.email,
+    required this.phoneNumber,
+    required this.licensePlate,
+  });
 
-  UserResponseModel.fromJson(Map<String, dynamic> json) {
-    user = json['user'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['user'] = this.user;
-    return data;
+  factory UserResponseModel.fromJson(Map<String, dynamic> json) {
+    return UserResponseModel(
+      username: json['user']['username'],
+      email: json['user']['email'],
+      phoneNumber: json['phoneNumber'],
+      licensePlate: json['licensePlate'],
+    );
   }
 }

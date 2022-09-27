@@ -158,7 +158,8 @@ class _LoginPageState extends State<LoginPage> {
                                   await FlutterSession()
                                       .set('token', response.token),
                                   // ignore: unnecessary_brace_in_string_interps
-                                  print('the response data is ${response}'),
+                                  print(
+                                      'the response data is ${response.token}'),
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
