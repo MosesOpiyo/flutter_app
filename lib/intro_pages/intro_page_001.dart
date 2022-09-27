@@ -3,9 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:gateway/intro_pages/intro_page_002.dart';
 
+// ignore: use_key_in_widget_constructors
 class IntroPage001 extends StatelessWidget {
-  const IntroPage001({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,8 +44,7 @@ class IntroPage001 extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) => const IntroPage002()),
+                      MaterialPageRoute(builder: (context) => IntroPage002()),
                     );
                   },
                   child: Text('Get started'),

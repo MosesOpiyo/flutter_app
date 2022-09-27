@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, unused_import, avoid_unnecessary_containers, use_key_in_widget_constructors
+// ignore_for_file: prefer_const_constructors, unused_import, avoid_unnecessary_containers, use_key_in_widget_constructors, import_of_legacy_library_into_null_safe, avoid_print, avoid_types_as_parameter_names, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
 import 'package:flutter_session/flutter_session.dart';
@@ -26,7 +26,17 @@ TextEditingController passwordController = TextEditingController();
 class _SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: signupUI(context));
+    return Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          shadowColor: Colors.transparent,
+          backgroundColor: Colors.transparent,
+          title: Text(
+            'Sign Up',
+            style: TextStyle(fontWeight: FontWeight.w800, fontSize: 16),
+          ),
+        ),
+        body: signupUI(context));
   }
 
   Widget signupUI(BuildContext context) {
@@ -35,28 +45,6 @@ class _SignupPageState extends State<SignupPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          Container(
-            padding: EdgeInsets.only(top: 20),
-            child: Row(
-              children: <Widget>[
-                Container(
-                    child: IconButton(
-                        icon: Icon(
-                          Icons.chevron_left,
-                          size: 30,
-                          color: Colors.black,
-                        ),
-                        onPressed: () {})),
-                Container(
-                  padding: EdgeInsetsDirectional.only(start: 105),
-                  child: Text(
-                    "Sign up",
-                    style: TextStyle(fontWeight: FontWeight.w800, fontSize: 16),
-                  ),
-                )
-              ],
-            ),
-          ),
           Container(
             padding: EdgeInsetsDirectional.only(end: 62, top: 80),
             child: Text(
@@ -166,7 +154,7 @@ class _SignupPageState extends State<SignupPage> {
                               if (response.username != "" &&
                                   response.email != "" &&
                                   response.password != "")
-                                {
+                                { 
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(

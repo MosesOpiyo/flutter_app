@@ -1,14 +1,20 @@
 // ignore_for_file: unused_import, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:gateway/Models/venueModels/venue_response.dart';
 import 'package:gateway/UI/components/homepage_body.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  HomePage({Key? key}) : super(key: key);
+  late List<Map<VenueResponseModel, dynamic>>? model;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: buildAppBar(), body: Body());
+    return Scaffold(
+      appBar: buildAppBar(),
+      body: Body(),
+      resizeToAvoidBottomInset: false,
+    );
   }
 
   AppBar buildAppBar() {
