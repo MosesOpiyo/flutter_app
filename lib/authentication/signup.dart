@@ -24,18 +24,25 @@ TextEditingController emailController = TextEditingController();
 TextEditingController passwordController = TextEditingController();
 
 class _SignupPageState extends State<SignupPage> {
+  void _toggle() {
+    setState(() {
+      hidePassword = !hidePassword;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
-          centerTitle: true,
-          shadowColor: Colors.transparent,
-          backgroundColor: Colors.transparent,
-          title: Text(
-            'Sign Up',
-            style: TextStyle(fontWeight: FontWeight.w800, fontSize: 16),
-          ),
-        ),
+            centerTitle: true,
+            shadowColor: Colors.transparent,
+            backgroundColor: Colors.transparent,
+            title: Container(
+              width: 145,
+              height: 60,
+              child: Image.asset('assets/logo1.png', fit: BoxFit.cover),
+            )),
         body: signupUI(context));
   }
 
@@ -46,14 +53,27 @@ class _SignupPageState extends State<SignupPage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Container(
-            padding: EdgeInsetsDirectional.only(end: 62, top: 80),
+            padding: EdgeInsetsDirectional.only(end: 130, top: 20),
             child: Text(
-              "Welcome to Gateway.",
-              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+              "Create your",
+              style: TextStyle(
+                  fontSize: 40,
+                  fontFamily: 'Dangrek',
+                  fontWeight: FontWeight.w400),
             ),
           ),
           Container(
-            padding: EdgeInsetsDirectional.only(end: 180, top: 10, bottom: 20),
+            padding: EdgeInsetsDirectional.only(end: 200, start: 10),
+            child: Text(
+              "Account",
+              style: TextStyle(
+                  fontSize: 40,
+                  fontFamily: 'Dangrek',
+                  fontWeight: FontWeight.w400),
+            ),
+          ),
+          Container(
+            padding: EdgeInsetsDirectional.only(end: 180, bottom: 10),
             child: Text(
               "Lets get you signed up.",
               style: TextStyle(
@@ -108,9 +128,16 @@ class _SignupPageState extends State<SignupPage> {
                   width: 330,
                   child: TextFormField(
                     decoration: InputDecoration(
+                        suffixIcon: IconButton(
+                          onPressed: _toggle,
+                          icon: Icon(hidePassword
+                              ? Icons.visibility_off
+                              : Icons.visibility),
+                        ),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20.0)),
                         labelText: 'Password'),
+                    obscureText: hidePassword,
                     keyboardType: TextInputType.text,
                     controller: passwordController,
                   ),
@@ -118,14 +145,27 @@ class _SignupPageState extends State<SignupPage> {
               ],
             ),
           ),
-          Container(
-            padding: EdgeInsetsDirectional.only(end: 120),
-            child: Text(
-              "Agree to our terms & conditions.",
-              style: TextStyle(
-                color: Color(0xFF0E3311).withOpacity(0.5),
+          Row(
+            children: [
+              Container(
+                padding: EdgeInsets.only(left: 40),
+                child: Text(
+                  "Agree to our",
+                  style: TextStyle(
+                    color: Color(0xFF0E3311).withOpacity(0.5),
+                  ),
+                ),
               ),
-            ),
+              Container(
+                padding: EdgeInsets.only(left: 3),
+                child: Text(
+                  "terms & conditions.",
+                  style: TextStyle(
+                    color: Color(0xFF0E3311).withOpacity(0.5),
+                  ),
+                ),
+              ),
+            ],
           ),
           Container(
             margin: EdgeInsetsDirectional.only(top: 20),
@@ -154,7 +194,7 @@ class _SignupPageState extends State<SignupPage> {
                               if (response.username != "" &&
                                   response.email != "" &&
                                   response.password != "")
-                                { 
+                                {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
@@ -174,22 +214,11 @@ class _SignupPageState extends State<SignupPage> {
             ),
           ),
           Container(
-            padding: EdgeInsetsDirectional.only(top: 15),
+            padding: EdgeInsetsDirectional.only(top: 15, bottom: 5),
             child: Text(
               "Or",
               style: TextStyle(
                 color: Color(0xFF0E3311).withOpacity(0.5),
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsetsDirectional.only(top: 10),
-            child: SizedBox(
-              width: 330,
-              height: 50,
-              child: SignInButton(
-                Buttons.Google,
-                onPressed: () {},
               ),
             ),
           ),

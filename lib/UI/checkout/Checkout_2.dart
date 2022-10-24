@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:gateway/Models/venueModels/single_venue_response.dart';
@@ -9,25 +7,28 @@ import 'package:gateway/UI/homepage.dart';
 import 'package:gateway/UI/venue/venue.dart';
 import 'package:http/http.dart';
 
-class Checkout extends StatelessWidget {
-  Checkout({
-    Key? key,
-  }) : super(key: key);
+class Checkout2 extends StatefulWidget {
+  Checkout2({Key? key, required this.name, required this.location})
+      : super(key: key);
 
-  late String name;
-  late String location;
+  final String name;
+  final String location;
+  String valueData() {
+    // ignore: void_checks
+    print(name);
+    return name;
+  }
+
+  @override
+  State<Checkout2> createState() => _Checkout2State();
+}
+
+class _Checkout2State extends State<Checkout2> {
   TextEditingController amountController = TextEditingController();
-  String dropdownvalue = 'Item 1';
-  var items = [
-    'Item 1',
-    'Item 2',
-    'Item 3',
-    'Item 4',
-    'Item 5',
-  ];
 
   @override
   Widget build(BuildContext context) {
+    var currentValue;
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: PreferredSize(
@@ -58,7 +59,7 @@ class Checkout extends StatelessWidget {
                     Container(
                       padding: EdgeInsets.only(top: 35),
                       child: Text(
-                        "Now checking out of Venue",
+                        "Now checking out of ${widget.name}",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 15,
@@ -131,7 +132,7 @@ class Checkout extends StatelessWidget {
                                     Container(
                                       padding: EdgeInsets.only(left: 10),
                                       child: Text(
-                                        'Name',
+                                        widget.name,
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontSize: 25,
@@ -152,7 +153,7 @@ class Checkout extends StatelessWidget {
                                     Container(
                                       padding: EdgeInsets.only(left: 2),
                                       child: Text(
-                                        'location',
+                                        widget.location,
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontSize: 15,
@@ -192,13 +193,17 @@ class Checkout extends StatelessWidget {
                             child: Padding(
                                 padding: EdgeInsets.only(left: 30, right: 30),
                                 child: DropdownButton(
-                                  value: "menuone",
-                                  items: [
-                                    DropdownMenuItem(
-                                      child: Text("Methods"),
-                                      value: "menuone",
-                                    )
-                                  ],
+                                  value: currentValue,
+                                  items: <String>['Mpesa', 'Debit', 'Credit']
+                                      .map<DropdownMenuItem<String>>(
+                                          (String value) {
+                                    return DropdownMenuItem<String>(
+                                      value: value,
+                                      child: Text(
+                                        value,
+                                      ),
+                                    );
+                                  }).toList(),
                                   onChanged: (value) {},
                                   isExpanded:
                                       true, //make true to take width of parent widget
@@ -215,12 +220,13 @@ class Checkout extends StatelessWidget {
               child: SizedBox(
                 width: 320,
                 child: TextFormField(
+                  enabled: false,
+                  initialValue: "${widget.name}",
                   decoration: InputDecoration(
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0)),
                       labelText: 'Amount'),
                   keyboardType: TextInputType.number,
-                  controller: amountController,
                 ),
               ),
             )
@@ -235,16 +241,7 @@ class Checkout extends StatelessWidget {
           ),
           child: InkWell(
             focusColor: Colors.black,
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => Checkout(
-                        // ignore: prefer_const_literals_to_create_immutables
-
-                        )),
-              );
-            },
+            onTap: () {},
             child: const SizedBox(
               height: kToolbarHeight,
               width: double.infinity,
@@ -258,11 +255,5 @@ class Checkout extends StatelessWidget {
             ),
           ),
         ));
-  }
-
-  @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    throw UnimplementedError();
   }
 }

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_session/flutter_session.dart';
 import 'package:gateway/Models/loginModels/login_response_models..dart';
+import 'package:gateway/Models/venueModels/single_venue_response.dart';
 import 'package:gateway/Service/user_service.dart';
 import 'package:gateway/Service/venue_service.dart';
 import 'package:gateway/UI/venue/venue.dart';
@@ -22,7 +23,7 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
   late List<VenueResponseModel> model = [];
   late Future<UserResponseModel> getProfile;
-  var name = '';
+  var venueId = 0;
   // ignore: unnecessary_cast
   @override
   void initState() {
@@ -176,89 +177,102 @@ class _BodyState extends State<Body> {
                 shrinkWrap: true,
                 itemBuilder: (context, index) {
                   return Container(
-                    margin: EdgeInsets.only(top: 20, left: 20, right: 20),
-                    height: 150,
-                    child: Stack(
-                      children: <Widget>[
-                        Positioned.fill(
-                            child: ClipRRect(
-                          borderRadius: BorderRadius.circular(20.0),
-                          child: Image(
-                              fit: BoxFit.cover,
-                              image: NetworkImage(
-                                'https://images.pexels.com/photos/5672376/pexels-photo-5672376.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-                              )),
-                        )),
-                        Positioned(
-                          bottom: 0,
-                          right: 0,
-                          left: 0,
-                          child: Container(
-                            height: 120,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(
-                                  bottomLeft: Radius.circular(20),
-                                  bottomRight: Radius.circular(20)),
-                              gradient: LinearGradient(
-                                  begin: Alignment.bottomCenter,
-                                  end: Alignment.topCenter,
-                                  colors: [
-                                    Colors.black.withOpacity(0.7),
-                                    Colors.transparent
-                                  ]),
+                      margin: EdgeInsets.only(top: 20, left: 20, right: 20),
+                      height: 150,
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Venue(
+                                        venue: model[index],
+                                      )));
+                        },
+                        child: Stack(
+                          children: <Widget>[
+                            Positioned.fill(
+                                child: ClipRRect(
+                              borderRadius: BorderRadius.circular(20.0),
+                              child: Image(
+                                  fit: BoxFit.cover,
+                                  image: NetworkImage(
+                                    'https://images.pexels.com/photos/5672376/pexels-photo-5672376.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+                                  )),
+                            )),
+                            Positioned(
+                              bottom: 0,
+                              right: 0,
+                              left: 0,
+                              child: Container(
+                                height: 120,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                      bottomLeft: Radius.circular(20),
+                                      bottomRight: Radius.circular(20)),
+                                  gradient: LinearGradient(
+                                      begin: Alignment.bottomCenter,
+                                      end: Alignment.topCenter,
+                                      colors: [
+                                        Colors.black.withOpacity(0.7),
+                                        Colors.transparent
+                                      ]),
+                                ),
+                              ),
                             ),
-                          ),
+                            Container(
+                              margin: EdgeInsets.only(top: 90),
+                              child: SizedBox(
+                                child: Column(
+                                  children: <Widget>[
+                                    Container(
+                                        margin: EdgeInsetsDirectional.only(
+                                            end: 50, bottom: 3),
+                                        child: Row(
+                                          children: <Widget>[
+                                            Container(
+                                              padding:
+                                                  EdgeInsets.only(left: 10),
+                                              child: Text(
+                                                model[index].name,
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 20,
+                                                    fontWeight:
+                                                        FontWeight.w800),
+                                              ),
+                                            ),
+                                          ],
+                                        )),
+                                    Container(
+                                        margin:
+                                            EdgeInsets.only(top: 5, left: 10),
+                                        child: Row(
+                                          children: <Widget>[
+                                            Icon(
+                                              Icons.location_pin,
+                                              color: Colors.white,
+                                              size: 15,
+                                            ),
+                                            Container(
+                                              padding: EdgeInsets.only(left: 2),
+                                              child: Text(
+                                                model[index].location,
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 15,
+                                                    fontWeight:
+                                                        FontWeight.w400),
+                                              ),
+                                            ),
+                                          ],
+                                        )),
+                                  ],
+                                ),
+                              ),
+                            )
+                          ],
                         ),
-                        Container(
-                          margin: EdgeInsets.only(top: 90),
-                          child: SizedBox(
-                            child: Column(
-                              children: <Widget>[
-                                Container(
-                                    margin: EdgeInsetsDirectional.only(
-                                        end: 50, bottom: 3),
-                                    child: Row(
-                                      children: <Widget>[
-                                        Container(
-                                          padding: EdgeInsets.only(left: 10),
-                                          child: Text(
-                                            model[index].name,
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.w800),
-                                          ),
-                                        ),
-                                      ],
-                                    )),
-                                Container(
-                                    margin: EdgeInsets.only(top: 5, left: 10),
-                                    child: Row(
-                                      children: <Widget>[
-                                        Icon(
-                                          Icons.location_pin,
-                                          color: Colors.white,
-                                          size: 15,
-                                        ),
-                                        Container(
-                                          padding: EdgeInsets.only(left: 2),
-                                          child: Text(
-                                            model[index].location,
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.w400),
-                                          ),
-                                        ),
-                                      ],
-                                    )),
-                              ],
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  );
+                      ));
                 },
                 itemCount: model.length,
               ),
