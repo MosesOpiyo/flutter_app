@@ -22,6 +22,12 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
+  void _toggle() {
+    setState(() {
+      hidePassword = !hidePassword;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -110,12 +116,7 @@ class _LoginPageState extends State<LoginPage> {
                             borderRadius: BorderRadius.circular(20.0)),
                         labelText: 'Password',
                         suffixIcon: IconButton(
-                          onPressed: () {
-                            // ignore: unused_element
-                            setState(() {
-                              hidePassword = !hidePassword;
-                            });
-                          },
+                          onPressed: _toggle,
                           icon: Icon(hidePassword
                               ? Icons.visibility_off
                               : Icons.visibility),
@@ -127,6 +128,7 @@ class _LoginPageState extends State<LoginPage> {
                         return null;
                       }
                     },
+                    obscureText: hidePassword,
                     keyboardType: TextInputType.text,
                     controller: passwordController,
                   ),

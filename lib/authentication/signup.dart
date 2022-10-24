@@ -24,6 +24,12 @@ TextEditingController emailController = TextEditingController();
 TextEditingController passwordController = TextEditingController();
 
 class _SignupPageState extends State<SignupPage> {
+  void _toggle() {
+    setState(() {
+      hidePassword = !hidePassword;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -122,9 +128,16 @@ class _SignupPageState extends State<SignupPage> {
                   width: 330,
                   child: TextFormField(
                     decoration: InputDecoration(
+                        suffixIcon: IconButton(
+                          onPressed: _toggle,
+                          icon: Icon(hidePassword
+                              ? Icons.visibility_off
+                              : Icons.visibility),
+                        ),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20.0)),
                         labelText: 'Password'),
+                    obscureText: hidePassword,
                     keyboardType: TextInputType.text,
                     controller: passwordController,
                   ),
@@ -132,14 +145,27 @@ class _SignupPageState extends State<SignupPage> {
               ],
             ),
           ),
-          Container(
-            padding: EdgeInsetsDirectional.only(end: 120),
-            child: Text(
-              "Agree to our terms & conditions.",
-              style: TextStyle(
-                color: Color(0xFF0E3311).withOpacity(0.5),
+          Row(
+            children: [
+              Container(
+                padding: EdgeInsets.only(left: 40),
+                child: Text(
+                  "Agree to our",
+                  style: TextStyle(
+                    color: Color(0xFF0E3311).withOpacity(0.5),
+                  ),
+                ),
               ),
-            ),
+              Container(
+                padding: EdgeInsets.only(left: 3),
+                child: Text(
+                  "terms & conditions.",
+                  style: TextStyle(
+                    color: Color(0xFF0E3311).withOpacity(0.5),
+                  ),
+                ),
+              ),
+            ],
           ),
           Container(
             margin: EdgeInsetsDirectional.only(top: 20),
