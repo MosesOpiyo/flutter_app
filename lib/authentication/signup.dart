@@ -190,49 +190,9 @@ class _SignupPageState extends State<SignupPage> {
           Container(
             padding: EdgeInsetsDirectional.only(top: 15, bottom: 5),
             child: Text(
-              "Sign in with social media",
+              "Or",
               style: TextStyle(
                 color: Color(0xFF0E3311).withOpacity(0.5),
-              ),
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.only(left: 50, bottom: 5),
-            child: SizedBox(
-              width: 500,
-              child: Row(
-                children: [
-                  SizedBox(
-                    width: 100,
-                    height: 40,
-                    child: IconButton(
-                        onPressed: () {},
-                        icon: Image.asset(
-                          'assets/google.png',
-                          fit: BoxFit.cover,
-                        )),
-                  ),
-                  SizedBox(
-                    width: 100,
-                    height: 40,
-                    child: IconButton(
-                        onPressed: () {},
-                        icon: Image.asset(
-                          'assets/facebook.png',
-                          fit: BoxFit.cover,
-                        )),
-                  ),
-                  SizedBox(
-                    width: 100,
-                    height: 40,
-                    child: IconButton(
-                        onPressed: () {},
-                        icon: Image.asset(
-                          'assets/twitter.png',
-                          fit: BoxFit.cover,
-                        )),
-                  )
-                ],
               ),
             ),
           ),
