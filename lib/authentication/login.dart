@@ -26,15 +26,16 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
-          centerTitle: true,
-          shadowColor: Colors.transparent,
-          backgroundColor: Colors.transparent,
-          title: Text(
-            'Login',
-            style: TextStyle(fontWeight: FontWeight.w800, fontSize: 16),
-          ),
-        ),
+            centerTitle: true,
+            shadowColor: Colors.transparent,
+            backgroundColor: Colors.transparent,
+            title: Container(
+              width: 145,
+              height: 60,
+              child: Image.asset('assets/logo1.png', fit: BoxFit.cover),
+            )),
         body: Center(
             child: Form(
               key: formKey,
@@ -52,19 +53,22 @@ class _LoginPageState extends State<LoginPage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Container(
-            padding: EdgeInsetsDirectional.only(end: 138, top: 80),
+            padding: EdgeInsetsDirectional.only(end: 70),
             child: Text(
-              "Welcome Back",
-              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+              "Welcome Back.",
+              style: TextStyle(
+                  fontSize: 40,
+                  fontFamily: 'Dangrek',
+                  fontWeight: FontWeight.w400),
             ),
           ),
           Container(
-            padding: EdgeInsetsDirectional.only(end: 180, top: 10, bottom: 20),
+            padding: EdgeInsetsDirectional.only(end: 180, bottom: 20),
             child: Text(
               "Login to your account.",
               style: TextStyle(
-                color: Color(0xFF0E3311).withOpacity(0.5),
-              ),
+                  color: Color(0xFF0E3311).withOpacity(0.5),
+                  fontWeight: FontWeight.w500),
             ),
           ),
           Container(
@@ -127,11 +131,17 @@ class _LoginPageState extends State<LoginPage> {
                     controller: passwordController,
                   ),
                 ),
+                Container(
+                    padding: EdgeInsets.only(left: 215),
+                    child: TextButton(
+                      child: Text("Forgot Password"),
+                      onPressed: () {},
+                    ))
               ],
             ),
           ),
           Container(
-            margin: EdgeInsetsDirectional.only(top: 20),
+            margin: EdgeInsetsDirectional.only(top: 5),
             child: SizedBox(
               width: 330,
               height: 50,
@@ -183,7 +193,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
           Container(
-            padding: EdgeInsetsDirectional.only(top: 15),
+            padding: EdgeInsetsDirectional.only(top: 10),
             child: Text(
               "Or",
               style: TextStyle(

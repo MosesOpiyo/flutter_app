@@ -12,19 +12,6 @@ import 'package:http/http.dart' as http;
 class Userservice {
   var client = http.Client();
 
-  Future<LoginResponseModel> profile() async {
-    var token = await FlutterSession().get("token");
-    var url = Uri.parse('http://192.168.100.13:8000/user/user_profile');
-
-    var response = await http.get(
-      url,
-      headers: {HttpHeaders.authorizationHeader: "Token $token"},
-    );
-    print("Raw response is ${response.body}");
-    print('Login response is ${loginResponseJson(response.body).toJson()}');
-    return loginResponseJson(response.body);
-  }
-
   Future<UserResponseModel> getProfile() async {
     var token = await FlutterSession().get("token");
     var url = Uri.parse('http://192.168.100.13:8000/user/user_profile');

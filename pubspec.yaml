@@ -57,6 +57,11 @@ dev_dependencies:
 flutter:
   assets:
      - assets/
+  fonts:
+    - family: Dangrek    
+      fonts:
+        - asset: assets/Dangrek-Regular.ttf
+          
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
