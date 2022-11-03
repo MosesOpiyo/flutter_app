@@ -19,9 +19,11 @@ GlobalKey<FormState> formKey = GlobalKey<FormState>();
 String username = '';
 String email = '';
 String password = '';
+String password2 = '';
 TextEditingController usernameController = TextEditingController();
 TextEditingController emailController = TextEditingController();
 TextEditingController passwordController = TextEditingController();
+TextEditingController passwordController2 = TextEditingController();
 
 class _SignupPageState extends State<SignupPage> {
   void _toggle() {
@@ -195,11 +197,13 @@ class _SignupPageState extends State<SignupPage> {
                                   response.email != "" &&
                                   response.password != "")
                                 {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => LoginPage()),
-                                  )
+                                  {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => LoginPage()),
+                                    )
+                                  }
                                 }
                               else
                                 {print('There was an error.')}

@@ -5,6 +5,7 @@ import 'package:gateway/Models/venueModels/single_venue_response.dart';
 import 'package:gateway/Models/venueModels/venue_response.dart';
 import 'package:gateway/UI/checkout/Checkout_2.dart';
 import 'package:gateway/UI/checkout/checkout.dart';
+import 'package:gateway/UI/components/home_2.dart';
 import 'package:gateway/UI/homepage.dart';
 import 'package:gateway/intro_pages/page_view.dart';
 
@@ -46,7 +47,7 @@ class Venue extends StatelessWidget {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => HomePage()));
+                                    builder: (context) => Home2()));
                           }),
                     ),
                   ],

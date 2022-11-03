@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_session/flutter_session.dart';
 import 'package:gateway/Service/auth_service.dart';
+import 'package:gateway/UI/components/home_2.dart';
 import 'package:gateway/UI/homepage.dart';
 import 'package:gateway/authentication/signup.dart';
 import 'package:http/http.dart' as http;
@@ -175,7 +176,7 @@ class _LoginPageState extends State<LoginPage> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => HomePage(
+                                        builder: (context) => Home2(
                                             // ignore: prefer_const_literals_to_create_immutables
 
                                             )),
@@ -204,7 +205,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
           Container(
-            padding: EdgeInsets.only(left: 50, bottom: 5),
+            padding: EdgeInsets.only(left: 30, bottom: 5),
             child: SizedBox(
               width: 500,
               child: Row(
@@ -244,7 +245,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
           Container(
-              padding: EdgeInsetsDirectional.only(start: 95),
+              padding: EdgeInsets.only(left: 80),
               child: Row(
                 children: <Widget>[
                   Text(

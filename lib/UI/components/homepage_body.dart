@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables, unused_import, import_of_legacy_library_into_null_safe
-
 import 'package:flutter/material.dart';
 import 'package:flutter_session/flutter_session.dart';
 import 'package:gateway/Models/loginModels/login_response_models..dart';
@@ -48,8 +46,7 @@ class _BodyState extends State<Body> {
   Widget build(BuildContext context) {
     // ignore: unused_local_variable
     Size size = MediaQuery.of(context).size;
-    return ListView(
-      scrollDirection: Axis.vertical,
+    return Column(
       children: [
         Expanded(
           child: Column(
@@ -60,7 +57,7 @@ class _BodyState extends State<Body> {
                 child: Column(
                   children: <Widget>[
                     Container(
-                      padding: EdgeInsetsDirectional.only(start: 40, top: 10),
+                      padding: const EdgeInsetsDirectional.only(top: 10),
                       child: Center(
                         child: Row(
                           children: <Widget>[
@@ -80,8 +77,6 @@ class _BodyState extends State<Body> {
                                           color: Colors.green),
                                     ),
                                     Container(
-                                      padding:
-                                          EdgeInsetsDirectional.only(start: 5),
                                       child: Text(
                                         'Malls',
                                         style: TextStyle(
@@ -123,7 +118,7 @@ class _BodyState extends State<Body> {
                       ),
                     ),
                     Container(
-                      padding: EdgeInsetsDirectional.only(end: 170, top: 10),
+                      padding: EdgeInsetsDirectional.only(top: 10),
                       child: FutureBuilder<UserResponseModel>(
                         builder: (context, snapshot) {
                           if (snapshot.hasData) {
@@ -142,7 +137,7 @@ class _BodyState extends State<Body> {
                       ),
                     ),
                     Container(
-                      padding: EdgeInsetsDirectional.only(end: 120, top: 5),
+                      padding: EdgeInsetsDirectional.only(top: 5),
                       child: Text(
                         "Where to?",
                         style: TextStyle(
