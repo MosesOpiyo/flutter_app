@@ -5,7 +5,6 @@ import 'package:flutter_session/flutter_session.dart';
 import 'package:gateway/Service/auth_service.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:gateway/authentication/login.dart';
-import 'package:gateway/UI/homepage.dart';
 import 'package:gateway/authentication/phone_number_auth.dart';
 
 class SignupPage extends StatefulWidget {
@@ -19,9 +18,11 @@ GlobalKey<FormState> formKey = GlobalKey<FormState>();
 String username = '';
 String email = '';
 String password = '';
+String password2 = '';
 TextEditingController usernameController = TextEditingController();
 TextEditingController emailController = TextEditingController();
 TextEditingController passwordController = TextEditingController();
+TextEditingController passwordController2 = TextEditingController();
 
 class _SignupPageState extends State<SignupPage> {
   void _toggle() {
@@ -195,11 +196,13 @@ class _SignupPageState extends State<SignupPage> {
                                   response.email != "" &&
                                   response.password != "")
                                 {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => LoginPage()),
-                                  )
+                                  {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => LoginPage()),
+                                    )
+                                  }
                                 }
                               else
                                 {print('There was an error.')}
