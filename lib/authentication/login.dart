@@ -3,8 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_session/flutter_session.dart';
 import 'package:gateway/Service/auth_service.dart';
-import 'package:gateway/UI/components/home_2.dart';
-import 'package:gateway/UI/homepage.dart';
+import 'package:gateway/UI/components/home_3.dart';
 import 'package:gateway/authentication/signup.dart';
 import 'package:http/http.dart' as http;
 
@@ -176,7 +175,7 @@ class _LoginPageState extends State<LoginPage> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Home2(
+                                        builder: (context) => Home3(
                                             // ignore: prefer_const_literals_to_create_immutables
 
                                             )),
