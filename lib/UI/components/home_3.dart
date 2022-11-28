@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:gateway/Service/user_service.dart';
 import 'package:gateway/Models/venueModels/venue_response.dart';
 import 'package:gateway/Models/UserModels/user_response_models.dart';
+import 'package:gateway/UI/BottomSheets/entry_bottomsheet.dart';
+import 'package:gateway/UI/Drawer/drawer.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as cnv;
-import 'package:gateway/UI/venue/venue.dart';
 
 class Home3 extends StatefulWidget {
   const Home3({Key? key}) : super(key: key);
@@ -39,6 +40,7 @@ class _Home3State extends State<Home3> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.amber,
+      drawer: const SideMenu(),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -50,7 +52,9 @@ class _Home3State extends State<Home3> {
               color: Colors.white,
             ),
           ),
-          onPressed: () {},
+          onPressed: () {
+            Scaffold.of(context).openDrawer();
+          },
         ),
         actions: [
           Container(
@@ -150,7 +154,7 @@ class _Home3State extends State<Home3> {
                               fontWeight: FontWeight.bold),
                         );
                       } else {
-                        return const Text('No user');
+                        return const Text('');
                       }
                     },
                     future: Userservice().getProfile(),
@@ -202,15 +206,13 @@ class _Home3State extends State<Home3> {
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Venue(
-                                        venue: model[index],
-                                      )));
+                          showModalBottomSheet(
+                              context: context,
+                              builder: (context) =>
+                                  EntryBottomSheet(venue: model[index]));
                         },
                         child: Padding(
-                          padding: const EdgeInsets.all(10),
+                          padding: const EdgeInsets.all(15),
                           child: Stack(
                             children: <Widget>[
                               Positioned.fill(
