@@ -123,7 +123,6 @@ class Venue extends StatelessWidget {
                             color: Colors.green,
                           ),
                         ),
-                        new Spacer(),
                         Container(
                           padding: EdgeInsets.only(right: 15),
                           child: Icon(
