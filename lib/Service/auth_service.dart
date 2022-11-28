@@ -8,7 +8,6 @@ import 'package:gateway/Models/registrationModels/registration_response_models.d
 import 'package:gateway/Service/shared_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_session/flutter_session.dart';
-import 'package:gateway/UI/homepage.dart';
 import 'package:http/http.dart' as http;
 
 class APIService {

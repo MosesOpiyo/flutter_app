@@ -1,9 +1,7 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:gateway/Models/venueModels/single_venue_response.dart';
 import 'package:gateway/Models/venueModels/venue_response.dart';
 import 'package:gateway/Service/venue_service.dart';
-import 'package:gateway/UI/homepage.dart';
 import 'package:gateway/UI/venue/venue.dart';
 import 'package:http/http.dart';
 
